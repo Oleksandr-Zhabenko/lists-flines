@@ -1,32 +1,23 @@
 -- |
 -- Module      :  Data.Lists.FLines
--- Copyright   :  (c) OleksandrZhabenko 2020
+-- Copyright   :  (c) OleksandrZhabenko 2020-2023
 -- License     :  MIT
 -- Stability   :  Experimental
--- Maintainer  :  olexandr543@yahoo.com
+-- Maintainer  :  oleksandr.zhabenko@yahoo.com
 --
 -- Additional data and structures to some 'String'-related lists.
 --
 
-{-# LANGUAGE CPP, FlexibleInstances, MultiParamTypeClasses #-}
+{-# LANGUAGE CPP, FlexibleInstances, MultiParamTypeClasses, NoImplicitPrelude #-}
 
 module Data.Lists.FLines where
 
-#ifdef __GLASGOW_HASKELL__
-#if __GLASGOW_HASKELL__>=710
-/* code that applies only to GHC 7.10.* and higher versions */
-import GHC.Base (mconcat)
-#endif
-#endif
+import GHC.Base
+import Data.String
+import Text.Show
+import GHC.Num
+import GHC.List (null)
 import System.IO
-
-#ifdef __GLASGOW_HASKELL__
-#if __GLASGOW_HASKELL__==708
-/* code that applies only to GHC 7.8.* */
-mconcat = concat
-#endif
-#endif
-
 
 -- | Auxiliary printing function to define the line ending needed to be shown and printed. Is primarily defined in the @uniqueness-periods-vector-general@ package (https://hackage.haskell.org/package/uniqueness-periods-vector-general).
 newLineEnding :: String
